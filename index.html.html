@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sparsha ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{
+background:linear-gradient(135deg,#f8d7ff,#c9d6ff);
+color:white;text-align:center;overflow-x:hidden;min-height:100vh
+}
+.screen{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;padding:20px}
+h1{font-family:'Dancing Script',cursive;font-size:4rem}
+.open-btn{
+position:absolute;left:50%;transform:translateX(-50%);
+padding:15px 35px;border:none;border-radius:999px;
+background:white;color:#8a4fff;font-weight:bold;cursor:pointer;
+transition:.35s;box-shadow:0 6px 20px rgba(0,0,0,.2)
+}
+.hidden{display:none}
+.content{padding:40px 20px}
+.card{
+max-width:800px;margin:25px auto;padding:25px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);border-radius:20px
+}
+.gallery{display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin:30px 0}
+.gallery img{width:220px;height:220px;object-fit:cover;border-radius:20px}
+.typewriter{max-width:750px;margin:auto;line-height:1.8;min-height:120px}
+.heart{position:fixed;animation:float 8s linear infinite;pointer-events:none}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-120vh)}}
+@keyframes bounce{50%{transform:translateY(-15px)}}
+</style>
+</head>
+<body>
+
+
+
+<div class="screen" id="welcome">
+<div style="font-size:120px;animation:bounce 2s infinite">🎁</div>
+<h1>Happy Birthday Sparsha ❤️</h1>
+<p id="hint" style="margin:20px;font-size:1.2rem">A special gift is waiting...</p>
+<button class="open-btn" id="giftBtn">Open Gift 🎁</button>
+
+<div id="loading" class="hidden">
+<h2>Preparing your surprise...</h2>
+<div style="width:320px;height:20px;background:white;border-radius:20px;margin:20px auto;overflow:hidden">
+<div id="progress" style="height:100%;width:0%;background:#8a4fff"></div>
+</div>
+<p id="loadingText">Loading memories...</p>
+</div>
+</div>
+
+<div id="mainContent" class="hidden">
+<div class="content">
+<h1>For Sparsha ❤️</h1>
+<p id="typewriter" class="typewriter"></p>
+
+<div class="gallery">
+<img src="C:\Users\HARSHITH\OneDrive\Desktop\sparsha\photo2.png.png"/300x300?text=Memory+1">
+<img src="C:\Users\HARSHITH\OneDrive\Desktop\sparsha\photo3.png.png"/300x300?text=Memory+2">
+<img src="C:\Users\HARSHITH\OneDrive\Desktop\sparsha\photo1.png.png"/300x300?text=Memory+3">
+</div>
+
+<div class="card">
+<h2>💖 A Special Message 💖</h2>
+<p>Dear Sparsha,<br><br>
+Happy Birthday! May your year be filled with happiness, success, laughter, unforgettable memories and everything that makes you smile. Thank you for being such a wonderful Friend and an amazing person,thank you for forgiving my mistakes everytime,thank you for being here. 🎂✨❤️
+</p>
+</div>
+
+<div class="card">
+<h2>💖 still not completed (just a bit more)</h2>
+<br><br>
+thank you for everything you were here for me everytime,and you know i'll be here
+all the time whenever you need,again sorry for everything and
+thank you for everything,
+"Happy Birthday SPARSHAAA ,love you meri pyaari dostt🎂✨❤️"
+</p>
+</div>
+
+<div class="card">
+<h2>🌸 Things That Make You Awesome</h2>
+<p>✨ Your kindness<br>✨ Your smile<br>✨ Your positivity<br>✨ Your sense of humor<br>✨ Being uniquely you</p>
+</div>
+</div>
+</div>
+
+<script>
+
+const giftBtn=document.getElementById("giftBtn");
+const hint=document.getElementById("hint");
+let count=0;
+
+const msgs=[
+"😂 Too slow! The button's here.",
+"🤭 Nice try... one more time.",
+"🏃 Catch me if you can!",
+"😜 Almost got it.",
+"🙈 Oops! It escaped again.",
+"🤔 Are you giving up already?",
+"🥺 Fine... last one.",
+"🎉 Okay, you win!"
+];
+
+giftBtn.addEventListener("click",()=>{
+ 
+ count++;
+ if(count<=8){
+  giftBtn.style.left=(Math.random()*(window.innerWidth-250))+"px";
+  giftBtn.style.top=(Math.random()*(window.innerHeight-200))+"px";
+  hint.innerText=msgs[count-1];
+ }else{
+  giftBtn.style.display="none";
+  document.getElementById("loading").classList.remove("hidden");
+  fakeLoading();
+ }
+});
+
+function fakeLoading(){
+ const p=document.getElementById("progress");
+ const t=document.getElementById("loadingText");
+ const msgs=["Collecting memories ❤️","Adding happiness ✨","Packing smiles 😊","Almost ready 🎂","Opening gift..."];
+ let w=0,i=0;
+ const x=setInterval(()=>{
+  w+=2;p.style.width=w+"%";
+  if(w%20===0 && i<msgs.length){t.innerText=msgs[i++];}
+  if(w>=100){clearInterval(x);createConfetti();setTimeout(startSurprise,2000);}
+ },50);
+}
+
+function createConfetti(){
+ for(let i=0;i<180;i++){
+  let e=document.createElement("div");
+  e.innerHTML="🎉";
+  e.style.position="fixed";
+  e.style.left=Math.random()*100+"vw";
+  e.style.top="-50px";
+  document.body.appendChild(e);
+  e.animate([{transform:"translateY(0)"},{transform:`translateY(${window.innerHeight+100}px)`}],{duration:2000+Math.random()*2500});
+  setTimeout(()=>e.remove(),5000);
+ }
+}
+
+function startSurprise(){
+ document.getElementById("welcome").style.display="none";
+ document.getElementById("mainContent").classList.remove("hidden");
+ createHearts();
+
+ const text="Today is all about celebrating an amazing person. I hope your birthday is filled with happiness, laughter, wonderful memories and endless smiles. Thank you for being such a wonderful friend, Sparsha. ❤️🎂✨";
+ let i=0;
+ (function type(){
+   if(i<text.length){
+      document.getElementById("typewriter").innerHTML+=text.charAt(i++);
+      setTimeout(type,35);
+   }
+ })();
+}
+
+function createHearts(){
+ setInterval(()=>{
+   let h=document.createElement("div");
+   h.className="heart";
+   h.innerHTML="❤️";
+   h.style.left=Math.random()*100+"vw";
+   h.style.fontSize=(15+Math.random()*20)+"px";
+   document.body.appendChild(h);
+   setTimeout(()=>h.remove(),8000);
+ },300);
+}
+</script>
+</body>
+</html>
